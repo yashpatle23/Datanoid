@@ -161,11 +161,58 @@
           <input type="checkbox" id="business" value="interest_business" name="user_interest"><label class="light" for="business">Data Scientist</label>
         
         </fieldset>
-        <button type="submit">Sign Up</button>
+        <!-- <button type="submit" id="submitBtn">Sign Up</button>
+
+        <div id="liveAlertPlaceholder"></div> -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Signup
+        </button>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Conformation</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                You are subbmitting your information to our website 
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="buttonsss" data-bs-dismiss="modal">Change</button>
+                <button type="button" class="btn btn-primary" id="submitBtn" >Submit</button>
+                <div id="liveAlertPlaceholder"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </form>
       
     </body>
 </html>
+
+ <script>const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+
+  const alert = (message, type) => {
+    const wrapper = document.createElement('div')
+    wrapper.innerHTML = [
+      `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+      `   <div>${message}</div>`,
+      '   <button type="submit" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>',
+      '</div>'
+    ].join('')
+  
+    alertPlaceholder.append(wrapper)
+  }
+  
+  const alertTrigger = document.getElementById('submitBtn')
+  if (alertTrigger) {
+    alertTrigger.addEventListener('click', () => {
+      alert(' YOHOOOO !!!! Registered sucessfully', 'success')
+    })
+  }</script> 
 
   </main><!-- End #main -->
 

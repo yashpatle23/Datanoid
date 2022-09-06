@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="true">
+    <title>Untitled</title>
+    <meta name="description" content="This is an example of a meta description.">
+    <link rel="stylesheet" type="text/css" href="theme.css">
+
+    <!--[if lt IE 9]>
+	<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+        <h1>Regestration</h1>
+		<form id="reg-form">
+             
+            <input type="text" placeholder="Username" id="username"/>
+             <input type="password" placeholder="password" id = "password"/>
+             <input type="Submit" value="Submit Form"/>
+        </form>
+
+        <script>
+
+            const form = document.getElementById('reg-form')
+            form.addEventListener('submit', registerUser)
+            
+            // 1. send data as json(in java script common)
+            //2. send data urlencoded(commmon in php)
+
+           async function registerUser(event){
+                event.preventDefault()
+                const userNmae= document.getElementById('username').value
+                const password= document.getElementById('password').value
+                
+              const result = await fetch('/api/register',{
+                  headers: {
+                    method: 'POST',
+                    'Content-Type':'application/json'
+                  },
+
+                  body: JSON.stringify({
+                      username ,
+                      password
+                  })
+                }).then(res=> res.json())
+
+                console.log(result)
+            }
+        </script>
+  </body>
+</html>
